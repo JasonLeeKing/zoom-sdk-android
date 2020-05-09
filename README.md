@@ -74,7 +74,7 @@ Before you try out our SDK, you would need the following to get started:
 * **A Zoom Account**: If you do not have one, you can sign up at [https://zoom.us/signup](https://zoom.us/signup).
   * Once you have your Zoom Account, sign up for a 60-days free trial at [https://marketplace.zoom.us/](https://marketplace.zoom.us/)
 * **An Android device**:
-  * OS: Android 4.0 (API Level 14) or later.
+  * OS: Android 5.0 (API Level 21) or later.
   * CPU: armeabi-v7a, x86, armeabi, arm64-v8a, x86_64
 * **Android Project**:
   * Support **AndroidX**
