@@ -1,7 +1,6 @@
 package us.zoom.sdkexample2;
 
 import us.zoom.sdk.MeetingError;
-import us.zoom.sdk.MeetingOptions;
 import us.zoom.sdk.MeetingService;
 import us.zoom.sdk.MeetingServiceListener;
 import us.zoom.sdk.MeetingStatus;
@@ -9,6 +8,7 @@ import us.zoom.sdk.StartMeetingOptions;
 import us.zoom.sdk.StartMeetingParams4APIUser;
 import us.zoom.sdk.ZoomError;
 import us.zoom.sdk.ZoomSDK;
+import us.zoom.sdk.ZoomSDKInitParams;
 import us.zoom.sdk.ZoomSDKInitializeListener;
 import android.app.Activity;
 import android.content.Intent;
@@ -51,7 +51,10 @@ public class MainActivity extends Activity implements Constants, MeetingServiceL
 		ZoomSDK zoomSDK = ZoomSDK.getInstance();
 		
 		if(savedInstanceState == null) {
-			zoomSDK.initialize(this, APP_KEY, APP_SECRET, WEB_DOMAIN, this);
+			ZoomSDKInitParams initParams = new ZoomSDKInitParams();
+			initParams.jwtToken = SDK_JWTTOKEN;
+			initParams.domain = WEB_DOMAIN;
+			zoomSDK.initialize(this, this, initParams);
 		}
 		
 		if(zoomSDK.isInitialized()) {
@@ -225,5 +228,10 @@ public class MainActivity extends Activity implements Constants, MeetingServiceL
 		if(meetingStatus == MeetingStatus.MEETING_STATUS_IDLE || meetingStatus == MeetingStatus.MEETING_STATUS_FAILED) {
 			selectTab(TAB_WELCOME);
 		}
+	}
+
+	@Override
+	public void onZoomAuthIdentityExpired() {
+
 	}
 }
